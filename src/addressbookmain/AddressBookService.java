@@ -3,8 +3,10 @@ package addressbookmain;
 import java.util.Scanner;
 
 public class AddressBookService{
+	
 	Contact[] allContacts = new Contact[20];
 	private int index = 0 ;
+	
 	public Contact addContact()
 	{
 		Scanner scanner = new Scanner(System.in);
