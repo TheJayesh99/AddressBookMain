@@ -28,8 +28,10 @@ public class AddressBookService{
 		String email = scanner.next();
 		Contact contact = new Contact( firstName, lastName, address, city, state, zip, phoneNumber, email);
 		allContacts[index++]= contact;
+		System.out.println("New Contact Added Sucessfully");
 		return contact;
 	}
+	
 	
 	public void diaplayContacts() {
 		for (int i = 0; i < allContacts.length; i++) {
