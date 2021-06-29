@@ -11,7 +11,7 @@ public class AddressBookMain
 		AddressBookService contact = new AddressBookService();
 		while (true) {
 			System.out.println("Enter what you have to do");
-			System.out.println(" 1 Add Contact \n 2 Edit Contact \n 3 Display Contact \n 4 Quit");
+			System.out.println(" 1 Add Contact \n 2 Edit Contact \n 3 Delete Contact \n 4 Display Contact \n 5 Quit ");
 			int userChoice = scanner.nextInt();
 			switch (userChoice) 
 			{
@@ -31,7 +31,12 @@ public class AddressBookMain
 					System.out.println("Contact not found");
 				}
 				break;
-			case 3:	
+			case 3:
+				System.out.println("Enter the Phone Number");
+				int phoneNumberToDelete = scanner.nextInt();
+				 contact.deleteContact(phoneNumberToDelete);
+				 break;
+			case 4:	
 				contact.diaplayContacts();
 				break;
 			default:
