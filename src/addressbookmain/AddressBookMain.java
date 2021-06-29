@@ -34,7 +34,15 @@ public class AddressBookMain
 			case 3:
 				System.out.println("Enter the Phone Number");
 				int phoneNumberToDelete = scanner.nextInt();
-				 contact.deleteContact(phoneNumberToDelete);
+				 boolean status = contact.deleteContact(phoneNumberToDelete);
+				 if(status)
+					{
+						System.out.println("Contact Deleted Successfully");
+					}
+					else
+					{
+						System.out.println("Contact not found");
+					}
 				 break;
 			case 4:	
 				contact.diaplayContacts();

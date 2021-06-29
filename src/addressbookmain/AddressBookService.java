@@ -32,7 +32,7 @@ public class AddressBookService{
 		return contact;
 	}
 
-	public void deleteContact(int phoneNumber) {
+	public boolean deleteContact(int phoneNumber) {
 
 		for (int i = 0; i < allContacts.length; i++) 
 		{
@@ -43,9 +43,11 @@ public class AddressBookService{
 					allContacts[j] = allContacts[j+1];
 				}
 				System.out.println("Contact deleted SuccessFully");
+				return true;
 			}
 
 		}
+		return false;
 	}
 
 	public boolean editContact(int phoneNumber)
