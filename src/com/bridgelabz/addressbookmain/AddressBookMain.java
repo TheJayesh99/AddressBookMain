@@ -1,12 +1,12 @@
-package addressbookmain;
+package com.bridgelabz.addressbookmain;
 
 import java.util.Scanner;
 
 public class AddressBookMain
 {
+	static Scanner scanner = new  Scanner(System.in);
 	public static void main(String[] args)
 	{
-		Scanner scanner = new  Scanner(System.in);
 		System.out.println("Welcome to Address Book");
 		AddressBookService contact = new AddressBookService();
 		while (true) {
@@ -52,7 +52,6 @@ public class AddressBookMain
 				System.exit(0);
 			}
 		}
-
 	}
 
 }

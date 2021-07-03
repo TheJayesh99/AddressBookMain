@@ -1,4 +1,4 @@
-package addressbookmain;
+package com.bridgelabz.addressbookmain;
 
 import java.util.Scanner;
 
@@ -6,10 +6,10 @@ public class AddressBookService{
 
 	Contact[] allContacts = new Contact[20];
 	private int index = 0 ;
+	Scanner scanner = new Scanner(System.in);
 
 	public Contact addContact()
 	{
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter First Name");
 		String firstName = scanner.next();
 		System.out.println("Enter last Name");
@@ -29,6 +29,7 @@ public class AddressBookService{
 		Contact contact = new Contact( firstName, lastName, address, city, state, zip, phoneNumber, email);
 		allContacts[index++]= contact;
 		System.out.println("New Contact Added Sucessfully");
+		
 		return contact;
 	}
 
@@ -56,7 +57,6 @@ public class AddressBookService{
 		{
 			if(allContacts[i] != null && allContacts[i].getPhoneNumber() == phoneNumber ) 
 			{
-				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter First Name");
 				String firstName = scanner.next();
 				System.out.println("Enter last Name");

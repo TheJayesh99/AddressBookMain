@@ -1,4 +1,4 @@
-package addressbookmain;
+package com.bridgelabz.addressbookmain;
 
 public class Contact {
 	 private String firstName;
