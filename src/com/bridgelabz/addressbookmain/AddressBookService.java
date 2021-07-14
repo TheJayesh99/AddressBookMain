@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+
 public class AddressBookService
 {
 	HashMap<String,LinkedList<Contact>> addressBooks = new HashMap<>();
@@ -40,8 +41,7 @@ public class AddressBookService
 			//if exist then add contact to list
 			LinkedList<Contact> contactList  =  addressBooks.get(bookName);
 			contactList.add(contact);				
-			addressBooks.put(bookName, contactList);
-			System.out.println("New Contact Added Sucessfully");
+			addContactToExsistingBook(contact, bookName, contactList);
 		}
 		else
 		{	
@@ -117,5 +117,29 @@ public class AddressBookService
 			System.out.println("Contact not found");
 		}
 		return status;
+	}
+	
+	//check Duplicate using name
+	private void addContactToExsistingBook(Contact contact, String bookName, LinkedList<Contact> contactList)
+	{
+		boolean isAlreadyExsist = false;
+		for (Contact searchContact : contactList) 
+		{
+			if (searchContact.getFirstName().equals(contact.getFirstName()))
+			{
+				isAlreadyExsist = true;
+				break;
+			}
+		}
+		if( !(isAlreadyExsist) )
+		{
+			contactList.add(contact);				
+			addressBooks.put(bookName, contactList);
+			System.out.println("New Contact Added Sucessfully");
+		}
+		else
+		{
+			System.out.println("Contact already exsist");
+		}
 	}
 }
