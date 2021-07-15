@@ -17,7 +17,8 @@ public class AddressBookMain
 					+ "\n 3 Delete Contact"
 					+ " \n 4 Display Contact "
 					+ "\n 5 Search Person on basis Of State or City "
-					+ " \n 6 Quit"
+					+ "\n 6 View Person on basis Of State or City "
+					+ " \n 7 Quit"
 					);
 
 			int userChoice = scanner.nextInt();
@@ -26,14 +27,15 @@ public class AddressBookMain
 			case 1:				
 				addressBook.addContact();				
 				break;
+				
 			case 2:
 				System.out.println("Enter the Phone Number");
 				int phoneNumber = scanner.nextInt();				
 				System.out.println("Enter the Address Book name");
 				String bookName = scanner.next();
 				addressBook.editContact(phoneNumber,bookName);	
-
 				break;
+				
 			case 3:
 				System.out.println("Enter the Phone Number");
 				int phoneNumberToDelete = scanner.nextInt();
@@ -41,18 +43,28 @@ public class AddressBookMain
 				String bookNameToUapdate = scanner.next();
 				addressBook.deleteContact(phoneNumberToDelete,bookNameToUapdate);
 				break;
+				
 			case 4:	
 				addressBook.displayContact();
 				break;
+				
 			case 5:
 				System.out.println("Enter the city or state which to be searched");
 				String searchKey = scanner.next();
 				addressBook.searchPerson(searchKey);
 				break;
+
 			case 6:
+				System.out.println("Enter the city or state which to be searched");
+				String viewKey = scanner.next();
+				addressBook.viewPerson(viewKey);
+				break;
+			
+			case 7:
 				System.out.println("Thanks For Using Us");
 				System.exit(0);
 				break;
+				
 			default:
 				System.out.println("Please Enter Proper Option");
 			}
