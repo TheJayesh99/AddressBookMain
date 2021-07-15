@@ -9,8 +9,7 @@ public class AddressBookService
 {
 	HashMap<String,LinkedList<Contact>> addressBooks = new HashMap<>();
 	Scanner scanner = new Scanner(System.in);
-	LinkedList<Contact> allContacts2 = new LinkedList<Contact>();
-
+	
 	//method to add contacts
 	public Contact addContact()
 	{
@@ -53,44 +52,54 @@ public class AddressBookService
 		return contact;
 	}
 
-	public boolean deleteContact(int phoneNumber) 
+	//method to delete contact
+	public boolean deleteContact(int phoneNumber,String bookName) 
 	{
-		for (Contact contact : allContacts2)
-		{	
-			if (contact.getPhoneNumber() == phoneNumber)
-			{
-				allContacts2.remove(contact);
-				return operationStatus(true);
+		if (addressBooks.containsKey(bookName))
+		{
+			LinkedList<Contact> contactList  =  addressBooks.get(bookName);
+			for (Contact contact : contactList)
+			{	
+				if (contact.getPhoneNumber() == phoneNumber)
+				{
+					contactList.remove(contact);
+					return operationStatus(true);
+				}
 			}
 		}
 		return operationStatus(false);
 	}
 
-	public boolean editContact(int phoneNumber)
+	//method to edit contact
+	public boolean editContact(int phoneNumber,String bookName)
 	{
-		for (Contact contact : allContacts2)
-		{	
-			if (contact.getPhoneNumber() == phoneNumber)
-			{
-				System.out.println("Enter First Name");
-				String firstName = scanner.next();
-				System.out.println("Enter last Name");
-				String lastName = scanner.next();
-				System.out.println("Enter address");
-				String address = scanner.next();
-				System.out.println("Enter City");
-				String city = scanner.next();
-				System.out.println("Enter State");
-				String state = scanner.next();
-				System.out.println("Enter zip");
-				String zip = scanner.next();
-				contact.setFirstName(firstName);
-				contact.setLastname(lastName);
-				contact.setAddress(address);
-				contact.setCity(city);
-				contact.setState(state);
-				contact.setState(zip);
-				return operationStatus(true);
+		if (addressBooks.containsKey(bookName))
+		{
+			LinkedList<Contact> contactList  =  addressBooks.get(bookName);
+			for (Contact contact : contactList)
+			{	
+				if (contact.getPhoneNumber() == phoneNumber)
+				{
+					System.out.println("Enter First Name");
+					String firstName = scanner.next();
+					System.out.println("Enter last Name");
+					String lastName = scanner.next();
+					System.out.println("Enter address");
+					String address = scanner.next();
+					System.out.println("Enter City");
+					String city = scanner.next();
+					System.out.println("Enter State");
+					String state = scanner.next();
+					System.out.println("Enter zip");
+					String zip = scanner.next();
+					contact.setFirstName(firstName);
+					contact.setLastname(lastName);
+					contact.setAddress(address);
+					contact.setCity(city);
+					contact.setState(state);
+					contact.setState(zip);
+					return operationStatus(true);
+				}
 			}
 		}
 		return operationStatus(false);
@@ -122,7 +131,7 @@ public class AddressBookService
 	{
 		if(status)
 		{
-			System.out.println("Contact Updated Successfully");
+			System.out.println("Operation  Successfully");
 		}
 		else
 		{

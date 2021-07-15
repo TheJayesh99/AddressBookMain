@@ -20,14 +20,18 @@ public class AddressBookMain
 				break;
 			case 2:
 				System.out.println("Enter the Phone Number");
-				int phoneNumber = scanner.nextInt();
-				addressBook.editContact(phoneNumber);	
+				int phoneNumber = scanner.nextInt();				
+				System.out.println("Enter the Address Book name");
+				String bookName = scanner.next();
+				addressBook.editContact(phoneNumber,bookName);	
 
 				break;
 			case 3:
 				System.out.println("Enter the Phone Number");
 				int phoneNumberToDelete = scanner.nextInt();
-				addressBook.deleteContact(phoneNumberToDelete);
+				System.out.println("Enter the Address Book name");
+				String bookNameToUapdate = scanner.next();
+				addressBook.deleteContact(phoneNumberToDelete,bookNameToUapdate);
 				break;
 			case 4:	
 				addressBook.displayContact();
