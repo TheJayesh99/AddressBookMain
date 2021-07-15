@@ -9,7 +9,7 @@ public class AddressBookService
 {
 	HashMap<String,LinkedList<Contact>> addressBooks = new HashMap<>();
 	Scanner scanner = new Scanner(System.in);
-	
+
 	//method to add contacts
 	public Contact addContact()
 	{
@@ -121,6 +121,23 @@ public class AddressBookService
 			System.out.println(bookName);
 			LinkedList<Contact> contactList  =  addressBooks.get(bookName);
 			displayContacts(contactList);
+		}
+	}
+
+	//method to search multiple person in city and state
+	public void searchPerson(String searchKey)
+	{
+		for (String bookName : addressBooks.keySet())
+		{
+			LinkedList<Contact> contactList  =  addressBooks.get(bookName);
+			for (Contact contact : contactList) 
+			{
+				if (contact.getCity().equals(searchKey) ||  contact.getState().equals(searchKey) )
+				{
+					System.out.println(contact.getFirstName() + ""+ contact.getLastname());
+
+				}
+			}
 		}
 	}
 
