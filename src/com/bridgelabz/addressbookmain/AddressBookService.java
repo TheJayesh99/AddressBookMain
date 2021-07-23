@@ -1,5 +1,9 @@
 package com.bridgelabz.addressbookmain;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Comparator;
 
 import java.util.HashMap;
@@ -12,7 +16,7 @@ public class AddressBookService
 	//address books hash map
 	HashMap<String,LinkedList<Contact>> addressBooks = new HashMap<>();
 	Scanner scanner = new Scanner(System.in);
-
+	public static final String FILE_PATH="c://Users//malij//OneDrive//Desktop//addressBook.txt";
 	//method to add contacts
 	public Contact addContact()
 	{
@@ -220,5 +224,67 @@ public class AddressBookService
 			break;
 		}
 		
+	}
+	
+	//method to store all contacts to file
+	public void writingToFile() 
+	{
+		//checking file is already there
+		checkFile();
+		
+		StringBuffer addressBookBuffer = new StringBuffer();
+		addressBooks.entrySet().stream()
+		.map(books->books.getKey())
+		.map(bookNames->{
+			addressBookBuffer.append(bookNames+"\n");
+			return addressBooks.get(bookNames); 
+		})
+		.forEach(contactInBook->addressBookBuffer.append(contactInBook+"\n"));
+		
+		//Writing data into file
+		try 
+		{
+			Files.write(Paths.get(FILE_PATH), addressBookBuffer.toString().getBytes());
+			System.out.println("Written in the file \n\n");
+		}
+		catch (IOException e) 
+		{	
+			System.err.println("Problem encountered while writing into file");
+		}
+	}
+
+	//method to read data from file
+	public void readFile() 
+	{
+		try
+		{
+			//reading data from file 
+			String contentOfFile = Files.readString(Paths.get(FILE_PATH));
+			//printing data in console
+			System.out.println(contentOfFile);
+		}
+		catch (IOException e) 
+		{
+			System.err.println("Faced some problem while reading the file ");
+		}
+	}
+	//method to create file if file doesn't exist
+	private void checkFile() 
+	{
+		File file = new File(FILE_PATH);
+		try 
+		{
+			//checking file already exists
+			if (!file.exists()) 
+			{
+				//if not creating a new file
+				file.createNewFile();
+				System.out.println("Created a file at "+FILE_PATH);
+			} 		
+		}
+		catch (IOException e1) 
+		{			
+			System.err.println("Problem encountered while creating a file");
+		}
 	}
 }
